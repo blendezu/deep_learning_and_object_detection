@@ -2,9 +2,13 @@
 
 This repository serves as a comprehensive workspace for implementing, training, and experimenting with various Deep Learning architectures from scratch. The goal is to deeply understand the mechanics of state-of-the-art neural networks through hands-on implementation and fine-tuning.
 
+## 📁 Models & Data
+
+All trained models and test images are found in this **[Google Drive Folder](https://drive.google.com/drive/folders/1aENvxV8Xr01qDtnp2IOiO2IuzMRR8hBL?usp=drive_link)**.
+
 ## 🛠️ Tech Stack
 
-- **Framework**: [PyTorch](https://pytorch.org/) and maybe [TensorFlow](https://www.tensorflow.org/) later
+- **Framework**: PyTorch and maybe TensorFlow later
 - **Libraries**: NumPy, Matplotlib, OpenCV, Torchvision
 - **Environment**: Jupyter Notebooks and Google Colab in VSCode
 
