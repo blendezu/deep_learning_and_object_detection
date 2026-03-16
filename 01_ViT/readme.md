@@ -20,7 +20,7 @@ This module explores the **Vision Transformer (ViT)** architecture end-to-end, s
 
 ---
 
-## 🧱 Stage 1 — Simple ViT from Scratch
+## 🔬 Stage 1 — Simple ViT from Scratch
 
 **Notebook:** `simple_ViT_from_scratch.ipynb`
 
@@ -107,7 +107,7 @@ The saved pre-trained weights (`pre_trained_ViT_CIFAR100.pth`) are used as the s
 
 ---
 
-## 🔧 Stage 3 — Fine-tuning the Self-Pre-trained ViT
+## 🔬 Stage 3 — Fine-tuning the Self-Pre-trained ViT
 
 **Notebook:** `fine_tuning_Mini-ViT_self_pretrained.ipynb`
 
@@ -150,7 +150,7 @@ The old `mlp_head` (Linear 256→100) is discarded. A new `mlp_head` (Linear 256
 
 ---
 
-## 🌐 Stage 4 — Fine-tuning Google's Pre-trained ViT-B/16
+## 🔬 Stage 4 — Fine-tuning Google's Pre-trained ViT-B/16
 
 **Notebook:** `fine_tuning_ViT_google_pretrained.ipynb`  
 **Notebook (more augmentation):** `fine_tuning_ViT_google_pretrained_more_aug.ipynb`
@@ -198,7 +198,7 @@ The original `model.heads.head` (Linear 768→1000) is replaced with a new `Line
 
 ---
 
-## 🔍 Stage 5 — Inference
+## 🔬 Stage 5 — Inference
 
 **Notebooks:** `inference_pizza_sushi.ipynb`, `inference_fake_real.ipynb`
 
