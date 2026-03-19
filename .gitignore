@@ -142,4 +142,6 @@ cython_debug/
 02_CNNs/02_AlexNet/Data
 02_CNNs/02_AlexNet/wandb
 
+*.pth
+
 .DS_Store
