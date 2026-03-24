@@ -50,3 +50,27 @@ The model is trained on the **Food101** dataset, which contains 101,000 images o
 - **Data Augmentation**: `RandomResizedCrop`, `ColorJitter`, `RandomHorizontalFlip`, and `RandomErasing`.
 
 ---
+
+## 🏛️ VGG16 vs. AlexNet: The Evolution of Depth
+
+While **AlexNet (2012)** proved that Deep Learning worked, **VGG16 (2014)** proved that **Systematic Depth** was the key to scaling performance.
+
+| Feature | AlexNet | VGG16 |
+| :--- | :--- | :--- |
+| **Layers** | 8 layers | 16 layers |
+| **Filter Sizes** | Large & Varied (11x11, 5x5, 3x3) | **Uniform 3x3** Throughout |
+| **Architecture** | Heuristic (hand-tuned) | **Modular Blocks** (standardized units) |
+| **Non-Linearity** | Fewer activations | More ReLUs (increased discriminative power) |
+
+**The VGG Breakthrough:**
+VGG replaced large filters (like 7x7) with a stack of three 3x3 filters. This achieved the same "receptive field" but introduced **more non-linearities** (ReLU) and **fewer parameters**, making the model's feature extraction more expressive.
+
+---
+
+## ⚠️ Why is VGG16 Obsolete Now?
+
+Despite its historical importance, VGG16 is rarely used in production today for three main reasons:
+
+1.  **Massive Parameter Weight**: VGG16 has **138 million parameters**, primarily due to the massive Fully Connected (FC) layers. A modern **ResNet-50** has only ~25M parameters while achieving higher accuracy.
+2.  **Vanishing Gradients**: VGG16 lacks "Skip Connections." As networks get deeper than 20 layers without these connections, they become extremely difficult to train.
+3.  **Computational Inefficiency**: It is slow and memory-intensive. Modern architectures like **EfficientNet** or **Vision Transformers (ViT)** provide far better "accuracy-to-latency" ratios.
