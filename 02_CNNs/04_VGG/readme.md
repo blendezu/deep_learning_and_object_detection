@@ -67,10 +67,29 @@ VGG replaced large filters (like 7x7) with a stack of three 3x3 filters. This ac
 
 ---
 
-## ⚠️ Why is VGG16 Obsolete Now?
+## 💾 The OOM Problem: VGG16 vs. AlexNet
+
+I had so much problem of Memory while training VGG16, but not on AlexNet. So I didnt train it. But the script ran. Here might be the reason why:
+
+### 1. Activation Volume (The Real Culprit)
+Memory consumption during training isn't just about parameters; it's mostly about **Activations** (intermediate feature maps) that must be stored for backpropagation.
+*   **AlexNet** starts with a `Stride=4` in the first layer. This immediately reduces the input (227x227) to 55x55.
+*   **VGG16** preserves the full resolution (224x224) for several layers before the first MaxPool. Storing 64 channels of 224x224 floats takes **significantly** more RAM than AlexNet's early-reduced maps.
+
+### 2. Depth and Gradient Storage
+VGG16 is twice as deep (16 layers vs 8). During the backward pass, PyTorch must keep the gradients and activations for all 16 layers in memory. 
+
+### 3. Parameter Count
+*   **AlexNet**: ~61 Million parameters.
+*   **VGG16**: ~138 Million parameters.
+*   With a larger model, the **Optimizer States** (which store momentum and gradients for every single parameter) also double in size.
+
+---
+
+## ⚠️ VGG16 Obsolete Now
 
 Despite its historical importance, VGG16 is rarely used in production today for three main reasons:
 
-1.  **Massive Parameter Weight**: VGG16 has **138 million parameters**, primarily due to the massive Fully Connected (FC) layers. A modern **ResNet-50** has only ~25M parameters while achieving higher accuracy.
+1.  **Massive Parameter Weight**: Being said VGG16 has **138 million parameters**, primarily due to the massive Fully Connected (FC) layers. A modern **ResNet-50** has only ~25M parameters while achieving higher accuracy.
 2.  **Vanishing Gradients**: VGG16 lacks "Skip Connections." As networks get deeper than 20 layers without these connections, they become extremely difficult to train.
 3.  **Computational Inefficiency**: It is slow and memory-intensive. Modern architectures like **EfficientNet** or **Vision Transformers (ViT)** provide far better "accuracy-to-latency" ratios.
