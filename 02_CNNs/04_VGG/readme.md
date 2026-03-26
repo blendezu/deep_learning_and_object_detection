@@ -3,6 +3,9 @@
 The VGG network (proposed by the Visual Geometry Group at Oxford) was a milestone in deep learning. Its primary contribution was demonstrating that **depth** is a critical component for high-performance visual recognition, achieved by using very small (**3x3**) convolution filters consistently throughout the network.
 
 ### 🍱 The VGG16 "Block" Strategy
+![VGG](VGG16.png)
+![VGG2](VGG16_2.png)
+
 VGG16 consists of **13 convolutional layers** and **3 fully connected layers**. It is organized into 5 functional blocks:
 
 | Block | Layers | Output Channels | Feature Map Size (Input 224x224) |
