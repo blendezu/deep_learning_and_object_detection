@@ -53,8 +53,8 @@ To solve this, the authors followed these steps:
 ### My Implementation Approach
 For learning purposes, I attempted to train **VGG16** directly from scratch without this complex pre-training step. And I trained only for 5 epochs just for testing.
 
-*   **VGG16 (No Batch Norm)**: In the version close to the original paper (`VGG16_no_batch_normalisation.ipynb`), there was **no significant improvement** in learning progress even with **Random Initialization**. The model struggled to converge efficiently despite using modern initialization.
-*   **The Fix: Batch Normalization**: To resolve this, I applied **Batch Normalization** (which was invented after VGG) in `VGG16_with_batch_normalisation.ipynb`. This successfully stabilized the training and significantly improved.
+*   **VGG16 (No Batch Norm)**: In the version close to the original paper (`VGG16_no_batch_normalisation.ipynb`), there was **no significant improvement** in learning progress even with **Random Initialization**. The model struggled to improve efficiently despite using modern initialization.
+*   **The Fix: Batch Normalization**: To resolve this, I applied **Batch Normalization** (which was invented after VGG) in `VGG16_with_batch_normalisation.ipynb`. This stabilized the training and improved.
 
 ---
 
