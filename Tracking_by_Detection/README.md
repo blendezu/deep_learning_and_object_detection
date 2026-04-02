@@ -2,7 +2,7 @@
 
 This repository focuses on Object Tracking by Detection. The tracking algorithms can be categorized into five generations based on their evolution and focus areas:
 
-## Generation 1 – Classic (Speed)
+## Generation 1 – Classic (Speed) 
 
 * **SORT (2016)**: Uses a Kalman filter for motion prediction + IoU-based association via the Hungarian Algorithm. Very fast (~260 FPS), but barely any Re-ID capabilities.
 * **IoU Tracker (2017)**: Even simpler – purely based on bounding box overlap. Extremely fast but fails under occlusion.
