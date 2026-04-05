@@ -20,13 +20,7 @@ This repository focuses on Object Tracking by Detection. The tracking algorithms
 * **OC-SORT (2022)**: Observation-Centric SORT. Corrects Kalman drift during occlusions through reactivation based on real observations.
 * **MotionTrack (2023)**: Optimized for fast, non-linear movements.
 
-## Generation 4 – Transformer / End-to-End
-
-* **TrackFormer (2021)**: DETR-based model; handles both detection and tracking in a single network.
-* **MOTR (2021)**: Track Queries propagate across frames, eliminating the need for a separate Re-ID model.
-* **MeMOT (2022)**: Features a long-term memory mechanism designed for recurring objects.
-
-## Generation 5 – Specialized / Hybrid
+## Generation 4 – Specialized / Hybrid
 
 * **SparseTrack (2023)**: Uses a pseudo-depth map for improved occlusion handling.
 * **Deep OC-SORT**: Combines OC-SORT with appearance costs for a hybrid association approach.
