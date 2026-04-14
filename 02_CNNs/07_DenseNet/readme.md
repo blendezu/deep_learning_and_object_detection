@@ -1,5 +1,3 @@
-# DenseNet — Summary
-
 ## Overview
 DenseNet (Densely Connected Convolutional Networks) introduces dense connectivity between layers: each layer receives, as input, the feature-maps of all preceding layers within the same dense block. This design improves gradient flow, encourages feature reuse, and reduces the number of parameters required for a given accuracy.
 
@@ -31,7 +29,7 @@ Example: if H_1 outputs 12 feature-maps and the original input had 3 channels, H
 ## Efficiency variants (DenseNet-B, DenseNet-C, DenseNet-BC)
 - Bottleneck layers (DenseNet-B): insert a 1×1 convolution before a 3×3 convolution to reduce the number of input feature-maps, improving computation efficiency.
 - Compression (DenseNet-C): in transition layers, reduce the number of feature-maps by a factor θ (0 < θ ≤ 1), e.g., θ = 0.5 halves channels.
-- DenseNet-BC: combines bottleneck layers and compression for maximal compactness and efficiency.
+- DenseNet-BC: which is implemented in this [script](DenseNet_from_scratch.ipynb), combines bottleneck layers and compression for maximal compactness and efficiency.
 
 ## Advantages
 - Improved gradient flow and reduced vanishing-gradient issues: each layer has direct access to loss gradients and the original input.
@@ -43,5 +41,22 @@ Example: if H_1 outputs 12 feature-maps and the original input had 3 channels, H
 - When implementing, ensure matching spatial sizes before concatenation (use transition layers or matching pooling/upsampling).
 - Bottleneck pattern: BN → ReLU → 1×1 Conv → BN → ReLU → 3×3 Conv (inside a dense layer).
 
-## References and further reading
-- For original experiments and exact architectures (DenseNet-121/169/201/264) consult the DenseNet paper and implementation notes in common deep learning libraries.
+## Why DenseNet is less common in practice
+
+DenseNet, despite its parameter efficiency, is less widely used in general practice than architectures like ResNet. This is mainly due to hardware-specific and practical implementation hurdles.
+
+Why is DenseNet not widespread?
+
+- High memory usage (VRAM): A naive DenseNet implementation is very memory-intensive. Because each layer concatenates and must retain the feature maps of all previous layers, memory access costs and VRAM requirements grow much faster than in ResNets.
+- Lower runtime throughput: Although DenseNets have fewer parameters, the many small convolutions and repeated concatenation operations increase latency on GPUs. ResNets—using summation instead of concatenation—are better aligned with current hardware accelerators.
+- Implementation complexity: Running DenseNet memory-efficiently requires special memory-management techniques beyond standard implementations.
+
+## Where DenseNet is typically applied
+
+Medical imaging is the most prominent niche. Datasets in radiology (CT, MRI, X-ray) and histopathology are often small, expensive to annotate, and high-dimensional. Here DenseNet's inherent regularization via feature reuse pays off: the network learns more robust representations from less data and is less prone to overfitting than classic architectures.
+
+Remote sensing (satellite imagery, SAR data, hyperspectral images) benefits similarly: image structures are rich in hierarchical textures, and small annotated training sets are common. DenseNet extracts fine spatial details across multiple abstraction levels especially efficiently in these tasks.
+
+Scientific small datasets — for example in materials science, agricultural research, or environmental monitoring — follow the same pattern: every annotated image is valuable, and DenseNet's more compact parameter usage through feature reuse becomes advantageous.
+
+In short: DenseNet is less a general-purpose backbone and more a specialist for scenarios with limited data and moderate image sizes — exactly where its core promises (no feature forgetting, improved gradient flow) outweigh the practical costs.
